@@ -67,7 +67,7 @@ unwrap_used = "warn"
 [workspace]
 
 [workspace.package]
-version = "1.0.0"
+version = "1.0.1"
 
 [package.metadata.day.web]
 modules = ["platform/web/calendar.js", "platform/web/storage.js"]
