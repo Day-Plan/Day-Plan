@@ -1,0 +1,6 @@
+/target/
+/build/
+/.cargo/config.toml
+.DS_Store
+DayApp.local.xcconfig
+!AGENTS.md

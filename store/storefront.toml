@@ -1,0 +1,50 @@
+[storefront.submission-info]
+copyright = "2026 The App Fair Project"
+contact-email = "support@appfair.org"
+contact-first-name = "App"
+contact-last-name = "Fair"
+contact-phone = "3107337836"
+review-notes = """
+The planner opens in Inbox and works offline without an account. Enter a task in the capture field and press Add, then enter notes and steps in its detail view. Mark the task important or add it to My Day. Use Manage lists and groups to create a list, then choose that list in the item's details. Completed and trashed items can be reopened and restored.
+
+Sync is optional. To try it, supply a writable HTTPS WebDAV collection, username and app password under Sync servers. The app creates its own day-plan-v1 folder. Each connected collection receives the same planner. No App Fair service or review login is required to use the planner.
+"""
+
+[storefront.metadata]
+name = "Day-Plan"
+subtitle = "Tasks, lists and notes"
+short = "Plan your day with tasks, notes, colored lists, and optional WebDAV sync."
+description = """
+Keep the things you want to do alongside the notes that explain them. Catch a thought in Inbox, break a task into steps, or choose a few priorities for My Day.
+
+• Write notes and checklists, give tasks due dates, and flag important items.
+• Keep work and personal projects in colored lists, gather lists into groups, and use tags across projects.
+• Find a note by its title, text, or tag. Browse scheduled, completed, and recently removed items.
+• Reopen a finished task or restore an item from Trash with its notes and steps.
+• On a computer, browse your lists, tasks, and details side by side. On a phone, tap through the same planner one screen at a time.
+
+Your planner is saved on your device. For sync, connect a WebDAV server you choose. Work offline and exchange your changes when you reconnect. Simultaneous edits to different fields merge, and competing text versions remain available to review.
+"""
+keywords = ["todo", "checklist", "organizer", "tasks", "notes", "lists", "tags", "schedule", "offline", "WebDAV"]
+release-notes = "Day-Plan replaces Skip Notes with tasks, notes, checklists, and optional WebDAV sync. This version starts a new planner. Save a separate copy of any notes you need from Skip Notes before updating."
+promo = "Give each project a home, choose what matters today, and keep the details with the task."
+privacy-url = "https://appfair.org/privacy/"
+support-url = "https://github.com/Day-Plan/Day-Plan/issues"
+marketing-url = "https://day-plan.github.io/Day-Plan/"
+
+[storefront.ios-uikit.apple-app-store.submission-info]
+apple-category = "PRODUCTIVITY"
+
+[storefront.macos-appkit.mac-app-store.submission-info]
+apple-category = "PRODUCTIVITY"
+
+[storefront.ios-uikit.apple-app-store.screenshots]
+iphone = ["planner", "details", "lists"]
+ipad = ["planner", "details", "lists"]
+
+[storefront.android-material.google-play-store.screenshots]
+phone = ["planner", "details", "lists"]
+tablet = ["planner", "details", "lists"]
+
+[storefront.macos-appkit.mac-app-store.screenshots]
+default = ["planner", "details", "lists"]

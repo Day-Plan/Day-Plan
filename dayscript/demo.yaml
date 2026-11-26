@@ -1,0 +1,50 @@
+# Synthetic planner data in an isolated walkthrough library.
+flow:
+  - wait_for: { id: nav }
+  - navigate: { route: inbox }
+  - wait_for: { id: quick_capture }
+  - input: { id: quick_capture, text: "Check the morning tide tables" }
+  - tap: { id: capture }
+  - wait_for: { id: item_today }
+  - toggle: { id: item_today, value: true }
+  - select: { id: item_color, index: 1 }
+  - navigate: { route: today }
+  - input: { id: quick_capture, text: "Choose a trail for Saturday" }
+  - tap: { id: capture }
+  - wait_for: { id: item_title }
+  - select: { id: item_color, index: 2 }
+  - navigate: { route: inbox }
+  - toolbar: { item: new_note }
+  - wait_for: { id: item_title }
+  - input: { id: item_title, text: "Ideas for the coast walk" }
+  - input: { id: item_body, text: "Stop at the lighthouse, then sketch the view from the cove." }
+  - toggle: { id: item_today, value: true }
+  - select: { id: item_color, index: 3 }
+  - navigate: { route: starred }
+  - input: { id: quick_capture, text: "Pack the field notebook" }
+  - tap: { id: capture }
+  - wait_for: { id: item_title }
+  - assert_text: { id: item_title, text: "Pack the field notebook" }
+  - input: { id: item_body, text: "Bring the pocket notebook and colored pencils for the coastal walk." }
+  - toggle: { id: item_star, value: true }
+  - toggle: { id: item_today, value: true }
+  - input: { id: step_input, text: "Sharpen the pencils" }
+  - tap: { id: add_step }
+  - input: { id: tag_input, text: "weekend" }
+  - tap: { id: add_tag }
+  - wait_idle: {}
+  - screenshot: { name: details, timeout_secs: 30 }
+  - navigate: { route: today }
+  - wait_for: { id: item_list }
+  - wait_idle: {}
+  - screenshot: planner
+  - navigate: { route: organize }
+  - input: { id: group_name, text: "Personal projects" }
+  - tap: { id: new_group }
+  - input: { id: list_name, text: "Coastal walks" }
+  - tap: { id: new_list }
+  - wait_idle: {}
+  - screenshot: lists
+  - navigate: { route: servers }
+  - wait_for: { id: server_url }
+  - assert_visible: { id: sync_now }

@@ -1,0 +1,17 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "NSFaceIDUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock protected WebDAV credentials on this device."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,21 @@
+# Synthetic lifecycle fixture. Run with --env DAY_PLAN_WALKTHROUGH=1.
+flow:
+  - wait_for: { id: nav }
+  - navigate: { route: inbox }
+  - input: { id: quick_capture, text: "Lifecycle fixture" }
+  - tap: { id: capture }
+  - wait_for: { id: item_done }
+  - toggle: { id: item_done, value: true }
+  - navigate: { route: completed }
+  - select: { id: item_list, index: 0 }
+  - assert_text: { id: item_title, text: "Lifecycle fixture" }
+  - assert_value: { id: item_done, value: true }
+  - toggle: { id: item_done, value: false }
+  - tap: { id: item_trash }
+  - navigate: { route: trash }
+  - select: { id: item_list, index: 0 }
+  - assert_text: { id: item_title, text: "Lifecycle fixture" }
+  - assert_text: { id: item_trash, key: restore }
+  - tap: { id: item_trash }
+  - navigate: { route: inbox }
+  - assert_visible: { id: item_list }

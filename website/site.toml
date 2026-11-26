@@ -1,0 +1,7 @@
+host = "https://day-plan.github.io/Day-Plan"
+locales = ["en"]
+accent-color = "#67549C"
+default-platform = "ios"
+[theme]
+repository = "appfair/appsite"
+ref = "main"

@@ -1,0 +1,35 @@
+name: Day-Plan
+on:
+  push:
+    branches: ["**"]
+    tags: ["v[0-9]+.[0-9]+.[0-9]+*"]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  appfair-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: appfair/appfair-apps/.github/actions/appfair-lint@main
+  app:
+    uses: daybrite/actions/.github/workflows/dayapp.yml@v1
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    secrets: inherit
+    with:
+      targets: all
+      preflight-checks: fmt clippy test
+      scripts: auto
+      locales: all
+      themes: light dark
+      launch-env: DAY_PLAN_WALKTHROUGH=1
+      release-assets: true
+      release-mode: pre-release
+      android-devices: |
+        device=pixel, os=36, orientation=portrait, slug=phone
+        device=medium_tablet, os=36, orientation=landscape, slug=tablet
+      scripts-once: dayscript/status.yaml
