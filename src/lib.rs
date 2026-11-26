@@ -25,6 +25,20 @@ fn open() -> Result<scene::Scene, day_persistence::DbError> {
     let driver = Sqlite::at("day-plan-v1.sqlite");
     scene::Scene::open(database::Database::open(driver)?)
 }
+#[cfg(not(target_arch = "wasm32"))]
+fn retry_storage(attempt: Signal<u32>) {
+    attempt.update(|v| *v += 1);
+}
+
+#[cfg(target_arch = "wasm32")]
+fn retry_storage(_: Signal<u32>) {
+    #[link(wasm_import_module = "env")]
+    unsafe extern "C" {
+        fn day_plan_retry_storage();
+    }
+    // SAFETY: the app’s storage module supplies this no-argument browser import.
+    unsafe { day_plan_retry_storage() };
+}
 pub fn root() -> impl Piece {
     let prefs = Preferences::new()
         .about(About::from_manifest().website("https://github.com/Day-Plan/Day-Plan"))
@@ -35,9 +49,18 @@ pub fn root() -> impl Piece {
         move || attempt.get(),
         move |_| {
             let Ok(sc) = open() else {
+                let message = res::str::storage_failed();
+                #[cfg(target_arch = "wasm32")]
+                let message = if Sqlite::web_storage().is_err() {
+                    res::str::browser_storage_unavailable()
+                } else {
+                    message
+                };
                 return column((
-                    label(res::str::storage_failed()),
-                    button(res::str::retry()).action(move || attempt.update(|v| *v += 1)),
+                    label(message),
+                    button(res::str::retry())
+                        .id(day::id!(retry_storage))
+                        .action(move || retry_storage(attempt)),
                 ))
                 .padding(Space::XL)
                 .any();

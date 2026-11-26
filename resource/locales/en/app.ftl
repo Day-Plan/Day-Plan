@@ -69,6 +69,7 @@ step_hint = Next step…
 remove_step = Remove step
 edit_failed = Couldn’t save this edit. Check its length and the storage available on this device.
 storage_failed = Couldn’t open or update the planner database.
+browser_storage_unavailable = Couldn’t access browser storage. Close other Day-Plan tabs and allow this site to use storage and service workers, then retry.
 sort = Sort by
 sort_focus = Importance
 sort_title = Title

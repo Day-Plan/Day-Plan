@@ -5,9 +5,12 @@ schema = 1
 [app]
 id = "org.appfair.app.SkipNotes"
 title = "Day-Plan"
-build = 60
+build = 61
 artifact = "day-plan"
 targets = ["macos-appkit", "ios-uikit", "android-material", "linux-gtk", "linux-qt", "windows-winui", "harmony-arkui", "web-dom"]
+
+[web]
+cross-origin-isolation = true
 
 # The window's size and minimum size in points, for every platform with resizable windows.
 [window]

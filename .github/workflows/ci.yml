@@ -22,8 +22,13 @@ jobs:
     secrets: inherit
     with:
       targets: all
+      day-deps: ${{ startsWith(github.ref, 'refs/tags/') && 'release' || 'auto' }}
       preflight-checks: fmt clippy test
       scripts: auto
+      script-setup: |
+        if [ "$DAY_SCRIPT_TARGET" = web-dom ]; then
+          node scripts/test-web-storage.cjs "$DAY_BUILD_DIR/cargo/web-dom/release/dist"
+        fi
       locales: all
       themes: light dark
       launch-env: DAY_PLAN_WALKTHROUGH=1
