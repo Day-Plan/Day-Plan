@@ -5,7 +5,7 @@ schema = 1
 [app]
 id = "org.appfair.app.SkipNotes"
 title = "Day-Plan"
-build = 62
+build = 63
 artifact = "day-plan"
 targets = ["macos-appkit", "ios-uikit", "android-material", "linux-gtk", "linux-qt", "windows-winui", "harmony-arkui", "web-dom"]
 
