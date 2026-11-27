@@ -27,6 +27,14 @@ enabled = true
 apple-app-id = "6740916318"
 google-play-id = "org.appfair.app.SkipNotes"
 
+# The native keychain stores WebDAV credentials. Its usage description is in the locale catalog.
+[permissions]
+biometrics = true
+
+# Day's connectivity component reads the Android network state for synchronization.
+[permissions.raw]
+android = ["android.permission.ACCESS_NETWORK_STATE"]
+
 [sandbox.macos-appkit]
 enabled = true
 network-client = true
