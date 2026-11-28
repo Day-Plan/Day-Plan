@@ -28,6 +28,8 @@ name = "dayapp"
 [dependencies]
 day = { package = "day-app", version = "0.*", features = ["model"] }
 day-piece-settings = "0.*"
+# The App Fair group every App Fair app carries in its settings.
+day-piece-appfair = "0.*"
 day-persistence = "0.*"
 day-sync = "0.*"
 day-sync-webdav = "0.*"
@@ -36,7 +38,6 @@ serde = { version = "1", features = ["derive"] }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 day-part-keychain = "0.*"
-chrono = { version = "0.4", default-features = false, features = ["clock"] }
 sha2 = "0.11"
 
 [dev-dependencies]
@@ -70,4 +71,4 @@ unwrap_used = "warn"
 version = "1.0.2"
 
 [package.metadata.day.web]
-modules = ["platform/web/calendar.js", "platform/web/storage.js"]
+modules = ["platform/web/storage.js"]

@@ -27,25 +27,7 @@ pub struct Scene {
 }
 
 pub fn today() -> String {
-    #[cfg(not(target_arch = "wasm32"))]
-    {
-        chrono::Local::now().date_naive().to_string()
-    }
-    #[cfg(target_arch = "wasm32")]
-    {
-        #[link(wasm_import_module = "env")]
-        unsafe extern "C" {
-            fn day_plan_local_date() -> u32;
-        }
-        // SAFETY: the app's calendar module supplies this zero-argument numeric import.
-        let date = unsafe { day_plan_local_date() };
-        format!(
-            "{:04}-{:02}-{:02}",
-            date / 10000,
-            (date / 100) % 100,
-            date % 100
-        )
-    }
+    day::datetime::DayDate::today_local().to_string()
 }
 
 pub fn name(d: &Document) -> String {

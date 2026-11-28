@@ -43,6 +43,8 @@ pub fn root() -> impl Piece {
     let prefs = Preferences::new()
         .about(About::from_manifest().website("https://github.com/Day-Plan/Day-Plan"))
         .group(general_group(res::locales::ALL))
+        // The App Fair group: about the project, the donation link, the other App Fair apps.
+        .provider(&day_piece_appfair::APP_FAIR)
         .install();
     let attempt = Signal::new(0u32);
     switch(
